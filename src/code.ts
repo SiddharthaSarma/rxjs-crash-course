@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 
 const observable = Observable.create((observer: any) => {
   try {
@@ -9,7 +10,7 @@ const observable = Observable.create((observer: any) => {
   } catch (error) {
     observer.error(error);
   }
-});
+}).share();
 
 // First subscriber
 observable.subscribe((val: string) => addItem(val));
